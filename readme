@@ -1,0 +1,104 @@
+# Entrega – Limpieza y transformación de datos en Power BI
+
+## 1. Objetivo
+
+El objetivo de esta actividad fue importar un archivo de ventas a Power BI Desktop y realizar un proceso de limpieza y transformación de datos mediante Power Query.
+
+Se buscó mejorar la calidad de la información, corregir los tipos de datos, gestionar valores nulos y duplicados, y separar los datos de clientes y ventas en consultas independientes.
+
+## 2. Importación de datos
+
+Se importó el archivo de Excel utilizando el conector correspondiente de Power BI Desktop.
+
+La hoja de origen fue `VENTAS_EXPORT`, que contenía información de operaciones comerciales, clientes, productos e importes de ventas.
+
+Se promovió la primera fila como encabezado para identificar correctamente las columnas.
+
+## 3. Transformaciones realizadas
+
+### Renombrado de columnas
+
+Se reemplazaron los nombres técnicos originales por nombres descriptivos utilizando el formato `snake_case`.
+
+Por ejemplo:
+
+- `COD_OP` → `id_venta`
+- `COD_CLI` → `id_cliente`
+- `NOM_CLI` → `nombre_cliente`
+- `F_VTA` → `fecha_venta`
+- `PU_VTA` → `precio_unitario`
+- `DTO_PCT` → `descuento_porcentaje`
+- `TOT_VTA` → `total_venta`
+
+Esto facilita la comprensión y utilización de los datos.
+
+### Corrección de tipos de datos
+
+Se asignaron los tipos de datos correspondientes:
+
+- **Texto:** identificadores alfanuméricos, nombres, correos electrónicos, teléfonos, ciudades, provincias, segmentos y categorías.
+- **Fecha:** `fecha_venta` y `fecha_alta_cliente`.
+- **Número entero:** `id_producto` y `cantidad`.
+- **Número decimal:** `precio_unitario`, `descuento_porcentaje` y `total_venta`.
+
+Para la conversión de fechas se utilizó la configuración regional correspondiente cuando fue necesario.
+
+### Limpieza de valores nulos
+
+Se analizaron los valores vacíos utilizando las herramientas de calidad de columna de Power Query.
+
+Las decisiones fueron las siguientes:
+
+- Se eliminaron cuatro filas completamente vacías, debido a que no contenían información útil.
+- Los valores nulos de `descuento_porcentaje` se reemplazaron por `0`, bajo el supuesto de que representan operaciones sin descuento.
+- Se conservaron los valores nulos de `email_cliente` y `telefono_cliente`, ya que son datos de contacto que no pueden completarse sin información adicional.
+- Se conservaron los valores nulos de `total_venta`, evitando asignar importes ficticios que pudieran distorsionar los resultados.
+
+### Eliminación de duplicados
+
+Se utilizó la opción **Quitar duplicados** sobre todas las columnas de la consulta base, para evitar conservar registros completamente idénticos.
+
+Posteriormente, en la consulta de clientes, se eliminaron los registros repetidos utilizando `id_cliente` como identificador único.
+
+## 4. Separación de tablas
+
+Se utilizó la opción **Referencia** de Power Query para crear consultas independientes a partir de la consulta principal.
+
+**Ventas_base**
+
+Contiene los 20 campos originales, con los cambios de nombres, tipos de datos y limpieza realizados. Se deshabilitó su carga al modelo, ya que funciona como consulta de preparación.
+
+**Clientes**
+
+Contiene 9 columnas relacionadas con la información de los clientes. Se conservaron 119 registros únicos.
+
+**Ventas**
+
+Contiene 12 columnas relacionadas con las operaciones comerciales. Se conservaron 900 registros.
+
+La columna `id_cliente` se mantiene en ambas tablas para permitir su vinculación dentro del modelo de datos.
+
+Esta separación reduce la repetición de información de clientes y facilita el análisis posterior.
+
+## 5. Resultado final
+
+El proceso permitió obtener dos tablas preparadas para el análisis:
+
+- `Clientes`: 119 filas y 9 columnas.
+- `Ventas`: 900 filas y 12 columnas.
+
+Las transformaciones quedaron registradas en el panel **Pasos aplicados** de Power Query, lo que permite revisar y reproducir el procedimiento.
+
+## 6. Evidencias
+
+Se adjuntan las siguientes capturas de pantalla:
+
+1. **Ventas_base:** pasos de renombrado, corrección de tipos, limpieza de filas vacías, reemplazo de valores y eliminación de duplicados.
+2. **Clientes:** selección de columnas y eliminación de duplicados por `id_cliente`.
+3. **Ventas:** selección de las columnas correspondientes a las operaciones comerciales.
+
+## 7. Conclusión
+
+La actividad permitió aplicar un proceso básico de extracción, transformación y limpieza de datos (ETL) mediante Power Query.
+
+Se priorizó conservar información útil, evitar la incorporación de valores ficticios y organizar los datos en tablas independientes, facilitando su utilización en futuros análisis y visualizaciones de Power BI.
