@@ -91,11 +91,15 @@ Las transformaciones quedaron registradas en el panel **Pasos aplicados** de Pow
 
 ## 6. Evidencias
 
-Se adjuntan las siguientes capturas de pantalla:
 
-1. **Ventas_base:** pasos de renombrado, corrección de tipos, limpieza de filas vacías, reemplazo de valores y eliminación de duplicados.
-2. **Clientes:** selección de columnas y eliminación de duplicados por `id_cliente`.
-3. **Ventas:** selección de las columnas correspondientes a las operaciones comerciales.
+### Consulta base: limpieza y transformación
+![Ventas_base](imagen%201%20data%20power%20bi.png)
+
+### Tabla Clientes
+![Clientes](imagen%202%20data%20power%20bi.png)
+
+### Tabla Ventas
+![Ventas](imagen%203%20data%20power%20bi.png)
 
 ## 7. Conclusión
 
