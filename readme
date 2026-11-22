@@ -36,10 +36,10 @@ Esto facilita la comprensión y utilización de los datos.
 
 Se asignaron los tipos de datos correspondientes:
 
-- **Texto:** identificadores alfanuméricos, nombres, correos electrónicos, teléfonos, ciudades, provincias, segmentos y categorías.
-- **Fecha:** `fecha_venta` y `fecha_alta_cliente`.
-- **Número entero:** `id_producto` y `cantidad`.
-- **Número decimal:** `precio_unitario`, `descuento_porcentaje` y `total_venta`.
+- Texto: identificadores alfanuméricos, nombres, correos electrónicos, teléfonos, ciudades, provincias, segmentos y categorías.
+- Fecha: `fecha_venta` y `fecha_alta_cliente`.
+- Número entero: `id_producto` y `cantidad`.
+- Número decimal: `precio_unitario`, `descuento_porcentaje` y `total_venta`.
 
 Para la conversión de fechas se utilizó la configuración regional correspondiente cuando fue necesario.
 
@@ -56,7 +56,7 @@ Las decisiones fueron las siguientes:
 
 ### Eliminación de duplicados
 
-Se utilizó la opción **Quitar duplicados** sobre todas las columnas de la consulta base, para evitar conservar registros completamente idénticos.
+Se utilizó la opción Quitar duplicados sobre todas las columnas de la consulta base, para evitar conservar registros completamente idénticos.
 
 Posteriormente, en la consulta de clientes, se eliminaron los registros repetidos utilizando `id_cliente` como identificador único.
 
@@ -64,15 +64,15 @@ Posteriormente, en la consulta de clientes, se eliminaron los registros repetido
 
 Se utilizó la opción **Referencia** de Power Query para crear consultas independientes a partir de la consulta principal.
 
-**Ventas_base**
+Ventas_base
 
 Contiene los 20 campos originales, con los cambios de nombres, tipos de datos y limpieza realizados. Se deshabilitó su carga al modelo, ya que funciona como consulta de preparación.
 
-**Clientes**
+Clientes
 
 Contiene 9 columnas relacionadas con la información de los clientes. Se conservaron 119 registros únicos.
 
-**Ventas**
+Ventas
 
 Contiene 12 columnas relacionadas con las operaciones comerciales. Se conservaron 900 registros.
 
